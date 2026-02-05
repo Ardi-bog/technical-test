@@ -89,7 +89,7 @@ public class InventoryServiceImplTests {
     void save_Withdrawal_InsufficientStock() {
         InventoryRequest req = new InventoryRequest(100, InventoryType.W);
         when(itemRepository.findById(1L)).thenReturn(Optional.of(mockItem));
-        when(inventoryRepository.getStockByItemId(1L)).thenReturn(10); // Stok cuma 10
+        when(inventoryRepository.getStockByItemId(1L)).thenReturn(10);
 
         assertThrows(InsufficientStockException.class, () -> inventoryService.save(1L, req));
     }
